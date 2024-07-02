@@ -53,20 +53,6 @@ int main() {
     display(&results);
     return 0;
 }
-
-void checkExams(classResults *results) {
-    for (int i = 0; i < results->classList.count; i++) {
-        // Check each exam score for each student
-        for (int j = 0; j < 3; j++) {
-            if (results->classList.student[i].studentGrades[j] < 60) {
-                // If score is less than 60, add student to retake list for exam j+1
-                results->examRetake[j].student[results->examRetake[j].count] = results->classList.student[i];
-                results->examRetake[j].count++;
-            }
-        }
-    }
-}
-
 void populate(classRecord *record, int classCount) {
     char fName[50];
     char lName[50];
@@ -111,6 +97,19 @@ studentDetail addStudent(char *fName, char *lName, char mi, int idNum, int grade
 
     return details;
 }
+void checkExams(classResults *results) {
+    for (int i = 0; i < results->classList.count; i++) {
+        // Check each exam score for each student
+        for (int j = 0; j < 3; j++) {
+            if (results->classList.student[i].studentGrades[j] < 60) {
+                // If score is less than 60, add student to retake list for exam j+1
+                results->examRetake[j].student[results->examRetake[j].count] = results->classList.student[i];
+                results->examRetake[j].count++;
+            }
+        }
+    }
+}
+
 
 void display(classResults *results) {
     int i, j;
