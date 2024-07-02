@@ -4,6 +4,35 @@
 #include <ctype.h>
 #include "functions.h"
 
+//complete the structure for the name of the mage below
+typedef struct {
+    char fName[50];
+    char lName[50];
+    char MI;
+} Fullname;
+
+//complete the structure for the mage's profile below
+typedef struct {
+    Fullname name;
+    int level;
+    char uniqueSpell[50];
+}Mage;
+
+
+typedef struct {
+    int minMana;
+    int maxMana;
+} Duel;
+
+typedef struct School {
+    Mage* students;
+    int count;
+    Duel range;
+} MageCollege;
+
+void Decipher(char *message, int key); //Helper Function
+void enrollMages(MageCollege* college); //Helper Function
+
 void factorial(int* level, int temp) {
     *level = 1;
     for (int i = 1; i <= temp; i++) {
